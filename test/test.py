@@ -36,7 +36,7 @@ async def test_project(dut):
     # Wait till sequence is loaded
     await ClockCycles(dut.clk, 10)
 
-    # --- Verify Game Progress ---
+    #game check
     dut._log.info("Making sure game is still ongoing")
     assert int(dut.uo_out.value) == 0
 
