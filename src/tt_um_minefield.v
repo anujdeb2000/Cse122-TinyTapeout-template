@@ -191,7 +191,4 @@ module minefield (
 endmodule
 
 `default_nettype wire
-    end
-
-endmodule
 
