@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module minefield (
+module tt_um_minefield (
     input clk,
     input start,
     input reset,
