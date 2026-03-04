@@ -83,7 +83,7 @@ module minefield (
     reg [7:0] lfsr;
     reg [2:0] index;
     reg [2:0] gameindex;  
-    reg [1:0] sequence[0:4];
+	reg [1:0] game_sequence[0:4];
     
     wire RNG;
     wire button_raw;
@@ -146,7 +146,7 @@ module minefield (
 
                 LOADING: begin
                     if (index < 3'd5) begin
-                        sequence[index] <= lfsr[1:0];
+                        game_sequence[index] <= lfsr[1:0];
                         index           <= index + 3'd1;
                     end 
                     else begin
@@ -156,7 +156,7 @@ module minefield (
 
                 PLAY: begin
                     if (buttonpulse) begin
-                        if (current_input == sequence[gameindex]) begin
+						if (current_input == game_sequence[gameindex]) begin
                             state    <= LOSE;
                             losegame <= 1'b1;
                         end 
