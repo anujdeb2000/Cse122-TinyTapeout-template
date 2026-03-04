@@ -112,4 +112,4 @@ Time=835000 | gState=     WIN | gIndex=4 | TargetSeq=10 | Win=1 | Lose=0
 ## External hardware
 This project wasn't designed with any piece of hardware in mind outside of buttons. It is meant to be adapted/interpreted to different hardware. The win and losegame outputs of the module can be translated to LEDS, a display, or anything else. 
 
-Generative AI was used for a number of things. First, it was used for catching any syntax errors and debugging. It was also for formatting the display of the testbench, aswell as the algorithm for what input should be used in each case. Lastly, it was used to help format the minefield.v verilog file into tt_um_minefield.v.
+Generative AI was used for a number of things. First, it was used for catching any syntax errors and debugging. It was also for formatting the display of the testbench, aswell as the algorithm for what input should be used in each case. Lastly, it was used to help translate the minefield.v verilog file into tt_um_minefield.v. Gen Ai was also used to help modify the test.py file for testing.
