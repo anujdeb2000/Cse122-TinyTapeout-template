@@ -41,5 +41,5 @@ async def test_project(dut):
     # Wait for logic to process
     await ClockCycles(dut.clk, 5)
     current_status = int(dut.uo_out.value)
-    dut._log.info(f"Final output value: {current_status}")
+    dut._log.info(f"Final output value: {current_status}") # wingame, losegame
     dut._log.info("Simulation Finished successfully")
