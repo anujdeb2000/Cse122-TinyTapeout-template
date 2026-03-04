@@ -12,7 +12,7 @@ module minefield_tb;
     wire losegame;
 
    //tb initialization
-    minefield testbench (
+    tt_um_minefield testbench (
         .clk(clk),
         .start(start),
         .reset(reset),
