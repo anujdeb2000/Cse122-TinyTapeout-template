@@ -26,23 +26,20 @@ async def test_project(dut):
     dut._log.info("Check for INIT state")
     assert dut.uo_out.value == 0
 
-     dut._log.info("start signal")
-     dut.ui_in.value = 1 #start == 1
-     await ClockCycles(dut.clk, 2)
-     dut.ui_in.value = 0
+    dut._log.info("start signal")
+    dut.ui_in.value = 1 #start == 1
+    await ClockCycles(dut.clk, 2)
+    dut.ui_in.value = 0
     # Set the input values you want to test
     #dut.ui_in.value = 20
     #dut.uio_in.value = 30
     await ClockCycles(dut.clk, 10)    #wait till sequence is loaded  (5 cycles)
-
     dut._log.info("Making sure game is still ongoing")
     assert int(dut.uo_out.value) & 0b11 == 0
-
     dut._log.info("Input button 1")
     dut.ui_in.value = 4 # 0100 binary (ui[2]) 
     await ClockCycles(dut.clk, 5)
     dut.ui_in.value = 0
-
     await ClockCycles(dut.clk, 5)
     dut._log.info(f"Current Output Value: {int(dut.uo_out.value)}")
     #checking output values (wingame, losegame)
