@@ -31,13 +31,14 @@ async def test_project(dut):
     #dut.uio_in.value = 30
     await ClockCycles(dut.clk, 10)    #wait till sequence is loaded  (5 cycles)
     dut._log.info("Making sure game is still ongoing")
-    assert int(dut.uo_out.value) & 0b11 == 0
+    assert int(dut.uo_out.value) == 0
     dut._log.info("Input button 1")
     dut.ui_in.value = 4 # 0100 binary (ui[2]) 
     await ClockCycles(dut.clk, 5)
     dut.ui_in.value = 0
     await ClockCycles(dut.clk, 5)
-    dut._log.info(f"Current Output Value: {int(dut.uo_out.value)}")
+    current_status = int(dut.uo_out.value)
+    dut._log.info(f"Final output value: {current_status}")
     #checking output values (wingame, losegame)
     dut._log.info("Simulation Finished successfully")
 
