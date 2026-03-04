@@ -23,18 +23,39 @@ async def test_project(dut):
     await ClockCycles(dut.clk, 10)
     dut.rst_n.value = 1
 
-    dut._log.info("Test project behavior")
+    dut._log.info("Check for INIT state")
+    assert dut.uo_out.value == 0
 
+     dut._log.info("start signal")
+     dut.ui_in.value = 1 #start == 1
+     await ClockCycles(dut.clk, 2)
+     dut.ui_in.value = 0
     # Set the input values you want to test
-    dut.ui_in.value = 20
-    dut.uio_in.value = 30
+    #dut.ui_in.value = 20
+    #dut.uio_in.value = 30
+    await ClockCycles(dut.clk, 10)    #wait till sequence is loaded  (5 cycles)
 
+    dut._log.info("Making sure game is still ongoing")
+    assert int(dut.uo_out.value) & 0b11 == 0
+
+    dut._log.info("Input button 1")
+    dut.ui_in.value = 4 # 0100 binary (ui[2]) 
+    await ClockCycles(dut.clk, 5)
+    dut.ui_in.value = 0
+
+    await ClockCycles(dut.clk, 5)
+    dut._log.info(f"Current Output Value: {int(dut.uo_out.value)}")
+    #checking output values (wingame, losegame)
+    dut._log.info("Simulation Finished successfully")
+
+
+    
     # Wait for one clock cycle to see the output values
-    await ClockCycles(dut.clk, 1)
+    #await ClockCycles(dut.clk, 1)
 
     # The following assersion is just an example of how to check the output values.
     # Change it to match the actual expected output of your module:
-    assert dut.uo_out.value == 50
+    #assert dut.uo_out.value == 50
 
     # Keep testing the module by changing the input values, waiting for
     # one or more clock cycles, and asserting the expected output values.
