@@ -23,13 +23,13 @@ project:
 # This section is for the datasheet/website. Use descriptive names (e.g., RX, TX, MOSI, SCL, SEG_A, etc.).
 pinout:
   # Inputs
-  ui[0]: "clk"
-  ui[1]: "start"
-  ui[2]: "reset"
-  ui[3]: "button1"
-  ui[4]: "button2"
-  ui[5]: "button3"
-  ui[6]: "button4"
+  ui[0]: "start"
+  ui[1]: "reset"
+  ui[2]: "button1"
+  ui[3]: "button2"
+  ui[4]: "button3"
+  ui[5]: "button4"
+  ui[6]: ""
   ui[7]: ""
 
   # Outputs
